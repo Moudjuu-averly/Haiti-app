@@ -443,14 +443,18 @@ class Cell extends React.Component {
     let id = cell.id;
     let currClass = "cell" + (cell.used || this.state.hilighted ? " hilighted" : "");
     return /*#__PURE__*/(
-      React.createElement("View", { className: currClass, id: id,
-        onMouseDown: this.props.selectionStart,
-        onMouseUp: this.props.selectionEnd,
-        onMouseOver: this.mouseOver,
-        onMouseOut: this.mouseOut },
-
+      <View
+      style={currClass}
+      id={id}
+      onMouseDown={this.props.selectionStart}
+      onMouseUp={this.props.selectionEnd}
+      onMouseOver={this.mouseOver}
+      onMouseOut={this.mouseOut}
+      >
         <Text>{cell.letter}</Text> ));
 
+      </View>
+    )
 
   }}
 
@@ -576,22 +580,40 @@ class Grid extends React.Component {
     let wordList = this.props.ws.wordList.slice();
     let toastVisible = this.props.ws.wordList.length === this.props.ws.alreadyFound.length;
     return /*#__PURE__*/(
-      React.createElement("View", { id: "root" }, /*#__PURE__*/
-      React.createElement("View", { className: "grid", style: gridStyle },
-      gridArr.map((row, i) => {return /*#__PURE__*/React.createElement(Row, { row: row, rowIndex: i, key: i,
-          selectionStart: this.selectionStart,
-          selectionEnd: this.selectionEnd, hasSelectionStarted: this.hasSelectionStarted });})), /*#__PURE__*/
+      <View style={styles.grid}>
+        <View 
+        // style={styles.word-list}
+        >
+        <View 
+        // style={{ ...styles.word-list, display: toastVisible ? "block" : "block"}}
+        >
+          {gridArr.map((row, i) => {
+            return (
+              <Row
+              row={row}
+              rowIndex={i}
+              key={i}
+              selectionStart={this.selectionStart}
+              selectionEnd={this.selectionEnd}
+              hasSelectionStarted={this.hasSelectionStarted}
+              />
+            ) })
+          } 
+        {   wordList.map((item, i) => {
+              let styleObj = {
+                textDecorationStyle: item.found ? "line-through" : "none" 
+              };
+      
+              return <Text key={i} style={styleObj}>{item.text}</Text>
+            })
+          }
 
-      React.createElement("View", { id: "word-list" }, /*#__PURE__*/
-      React.createElement("View", { style: { display: toastVisible ? "block" : "block" }, className: "ws-my-page-success-toast" }, "Wohoooo, You did it"), /*#__PURE__*/
-      React.createElement("View", null,
-      wordList.map((item, i) => {
-        let styleObj = {
-          textDecoration: item.found ? "line-through" : "none" };
+        </View>
 
-        return <Text key={i} style={styleObj}>{item.text}</Text>
-      })))));
+        </View>
 
+      </View>  
+    )
 
   }}
 
@@ -614,7 +636,7 @@ class Grid extends React.Component {
         right: 0,
         bottom: 0 };
   
-      return <View key={i} style={styleObj}>{this.state.message}</View> 
+      return <View key={i} style={styleObj}><Text>{this.state.message}</Text></View> 
     }}
 
   //wordsearch.js
@@ -678,7 +700,7 @@ class WordSearch extends React.Component {
       >
         <StatusBar barStyle="light-content" />
         <SafeAreaView style={styles.safearea}>
-          <WordSearch2/>
+          {/* <WordSearch2/> */}
         <View>
             <Text style={styles.text}>Word search puzzle</Text>
           </View> 

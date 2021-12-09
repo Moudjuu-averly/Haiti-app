@@ -1,5 +1,6 @@
 import React from "react";
-import { View, StyleSheet, Dimensions, Image } from "react-native";
+import { View, StyleSheet, Dimensions, Image, Text } from "react-native";
+import { Button, ButtonContainer } from "../components/Button";
 
 const screen = Dimensions.get("window");
 
@@ -30,24 +31,32 @@ const styles = StyleSheet.create({
   }
 });
 
-export const Alert = ({ correct, visible }) => {
+export const Alert = ({ correct, visible, answerCorrectData }) => {
   if (!visible) return null;
-
   const icon = correct
     ? require("../assets/props/check.png")
     : require("../assets/props/close.png");
 
   const circleStyles = [styles.circle];
-
   if (correct) {
     circleStyles.push(styles.circleCorrect);
   }
 
   return (
-    <View style={styles.container}>
+    <View style={{...styles.container, backgroundColor:'#202124c2'}}>
       <View style={circleStyles}>
         <Image source={icon} style={styles.icon} resizeMode="contain" />
       </View>
+      {
+        !correct && answerCorrectData ? 
+      <ButtonContainer>
+          <Button
+            key={123}
+            text={answerCorrectData.text}
+          />
+      </ButtonContainer>
+    : null
+      }
     </View>
   );
 };

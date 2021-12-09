@@ -8,6 +8,8 @@
         "eject": "expo eject"
     },
     "dependencies": {
+        "@jaredreisinger/react-crossword": "^2.3.1",
+        "@react-native-async-storage/async-storage": "^1.15.14",
         "@react-native-community/masked-view": "0.1.6",
         "@react-navigation/native": "^6.0.6",
         "expo": "^43.0.0",

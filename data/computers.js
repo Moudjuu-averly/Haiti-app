@@ -1,20 +1,20 @@
 const questions = [
   {
-    question: "What is localhost's IP address?",
+    question: "What is the fifth planet from the sun?",
     answers: [
-      { id: "1", text: "192.168.1.1" },
-      { id: "2", text: "127.0.0.1", correct: true },
-      { id: "3", text: "209.85.231.104" },
-      { id: "4", text: "66.220.149.25" }
+      { id: "1", text: "Mars" },
+      { id: "2", text: "Jupiter", correct: true },
+      { id: "3", text: "Saturn" },
+      { id: "4", text: "Venus" }
     ]
   },
   {
-    question: "What kind of fruit was used to name a computer in 1984?",
+    question: "How many planets are in the Solar System?",
     answers: [
-      { id: "1", text: "Blackberry" },
-      { id: "2", text: "Blueberry" },
-      { id: "3", text: "Pear" },
-      { id: "4", text: "Apple", correct: true }
+      { id: "1", text: "6" },
+      { id: "2", text: "7" },
+      { id: "3", text: "8", correct: true },
+      { id: "4", text: "9" }
     ]
   }
 ];

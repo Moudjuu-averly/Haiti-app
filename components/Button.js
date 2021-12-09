@@ -6,10 +6,12 @@ const styles = StyleSheet.create({
     backgroundColor: "rgba(255, 255, 255, 0.3)",
     borderRadius: 10,
     paddingVertical: 15,
-    alignItems: "center",
-    justifyContent: "center",
-    width: "46%",
-    marginTop: 20
+    marginBottom: 20,
+    padding:8,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent:'center',
+    width:'100%'
   },
   text: {
     color: "#fff",
@@ -17,10 +19,16 @@ const styles = StyleSheet.create({
     textAlign: "center"
   },
   buttonContainer: {
-    flexDirection: "row",
+    display: 'flex',
+    flexDirection: "column",
+    // alignItems: 'stretch',
     flexWrap: "wrap",
     marginTop: 20,
-    justifyContent: "space-between"
+    justifyContent:'center',
+    marginLeft:'auto',
+    marginRight:'auto',
+    width:'100%'
+
   }
 });
 
@@ -31,5 +39,5 @@ export const Button = ({ text, onPress = () => {} }) => (
 );
 
 export const ButtonContainer = ({ children }) => (
-  <View style={styles.buttonContainer}>{children}</View>
+  <View style={{ ...styles.buttonContainer, margin:20, }}>{children}</View>
 );
